@@ -25,7 +25,7 @@ app.get("/api/users", (request, response) => {
   //   response.send(users);
 
   // part 3: Query params
-  console.log(request.query);
+  //   console.log(request.query);
 
   const {
     query: { filter, value },
@@ -56,7 +56,8 @@ app.get("/api/users/:id", (request, response) => {
   }
 });
 
-app.get("/api/users", (request, response) => {});
+// part 4: post request
+app.post("/api/users", (request, response) => {});
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
