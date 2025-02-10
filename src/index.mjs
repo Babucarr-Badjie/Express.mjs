@@ -4,6 +4,9 @@ import express from "express";
 // express app
 const app = express();
 
+// middleware json() for POST request
+app.use(express.json());
+
 // port variable
 const PORT = process.env.PORT || 3000;
 
@@ -57,7 +60,13 @@ app.get("/api/users/:id", (request, response) => {
 });
 
 // part 4: post request
-app.post("/api/users", (request, response) => {});
+app.post("/api/users", (request, response) => {
+  const { body } = request;
+  const newUser = { id: users[users.length - 1].id + 1, ...body };
+
+  users.push(newUser);
+  return response.status(201).send(newUser);
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
